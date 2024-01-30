@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<!--navbar-->
+<nav class="navbar navbar-dark" style="background-color: #343a40">
+    <div class="container-fluid">
+        <span class="navbar-brand">
+            <b th:text="${principal.getName()}">Username</b>
+            with roles:
+            <span th:each="role : ${principal.getAuthorities()}">
+                <span th:text="${#strings.substring(role.authority, 5)}"></span>
+            </span>
+        </span>
+        <a th:href="@{/logout}" class="navbar-text btn" id="logoutBtn">Logout</a>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!--Боковая панель ролей-->
+        <div class="col-2 bg-white" style="height: 100vh">
+            <div class="nav flex-column nav-pills mt-3">
+                <button class="nav-link active text-start " data-bs-toggle="tab" data-bs-target="#adminPanel">Admin</button>
+                <button class="nav-link text-start" data-bs-toggle="tab" data-bs-target="#userPanel">User</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
