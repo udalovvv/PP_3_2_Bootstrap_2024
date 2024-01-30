@@ -24,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PreAuthorize("hasAuthority('USER') and authentication.principal.id.equals(#id)")
+    @PreAuthorize("hasAuthority('ADMIN') or authentication.principal.id.equals(#id)")
     @GetMapping("")
     public String show(@RequestParam("id") long id,
                        Model userModel,

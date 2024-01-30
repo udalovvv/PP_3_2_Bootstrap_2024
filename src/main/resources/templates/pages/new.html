@@ -30,28 +30,14 @@
           <input type="email" class="form-control" id="floatingEmail" placeholder="Password" th:field="*{email}">
           <label for="floatingEmail">Email</label>
         </div>
-
-        <div class="col-md">
-          <div class="form-floating">
-            <select class="form-select" id="floatingRole" th:field="*{roles}">
-<!--              <option th:each="role : ${newUser.getRoles()}" th:value="${role.id}" th:text="${role.getRole()}"></option>-->
-              <option value="1">ADMIN</option>
-              <option value="2">USER</option>
-            </select>
-            <label for="floatingRole">Role</label>
-          </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="floatingPass" placeholder="Password" th:field="*{password}">
+          <label for="floatingPass">Password</label>
         </div>
-
-<!--        <div class="col-md">-->
-<!--          <div class="form-floating">-->
-<!--            <select class="form-select" id="floatingRole" th:value="${emp.id}" th:field="*{roles}">-->
-<!--              <option selected="">Open this select menu</option>-->
-<!--              <option value="1">ADMIN</option>-->
-<!--              <option value="2">USER</option>-->
-<!--            </select>-->
-<!--            <label for="floatingRole">Role</label>-->
-<!--          </div>-->
-<!--        </div>-->
+        <select class="form-select" multiple aria-label="Multiple select example" size="2" th:field="*{roles}">
+          <option value="1">ADMIN</option>
+          <option value="2">USER</option>
+        </select>
 
         <br>
         <input type="submit" value="Save" class="btn btn-primary">

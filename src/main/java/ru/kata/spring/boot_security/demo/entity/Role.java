@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="roles")
@@ -25,10 +26,8 @@ public class Role implements GrantedAuthority{
     @NonNull
     private String role;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @NonNull
-    @JoinColumn(name = "id_user", referencedColumnName = "id")
-    private User owner_user;
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
     @Override
     public String getAuthority() {

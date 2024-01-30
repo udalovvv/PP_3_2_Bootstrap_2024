@@ -87,6 +87,14 @@
                         <input type="email" class="form-control" id="floatingEmail" placeholder="Password" th:field="*{email}">
                         <label for="floatingEmail">Email</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPass" placeholder="Password" th:field="*{password}">
+                        <label for="floatingPass">Password</label>
+                    </div>
+                    <select class="form-select" multiple aria-label="Multiple select example" size="2" th:field="*{roles}">
+                        <option value="1">ADMIN</option>
+                        <option value="2">USER</option>
+                    </select>
 
                     <input type="submit" value="Save" class="btn btn-primary">
                 </form>
@@ -124,6 +132,12 @@
                         <input type="email" class="form-control" id="email" placeholder="Email" disabled="">
                         <label for="Email">Email</label>
                     </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="role" placeholder="Role" disabled="">
+                        <label for="Role">Role</label>
+                    </div>
+
                 </div>
             </form>
         </div>
@@ -160,6 +174,10 @@
                         <input type="email" class="form-control" id="emailUDP" placeholder="Password" th:field="*{email}">
                         <label for="floatingEmail">Email</label>
                     </div>
+                    <select class="form-select" multiple aria-label="Multiple select example" size="2" th:field="*{roles}">
+                        <option value="1">ADMIN</option>
+                        <option value="2">USER</option>
+                    </select>
 
                     <input type="submit" value="Update" class="btn btn-primary">
                 </form>
@@ -187,12 +205,14 @@
             var lastName = row.find('td:nth-child(3)').text();
             var age = row.find('td:nth-child(4)').text();
             var email = row.find('td:nth-child(5)').text();
+            var role = row.find('td:nth-child(6)').text();
 
 
             $(this).find('#firstName').val(firstName);
             $(this).find('#lastName').val(lastName);
             $(this).find('#age').val(age);
             $(this).find('#email').val(email);
+            $(this).find('#role').val(role);
         });
     });
 

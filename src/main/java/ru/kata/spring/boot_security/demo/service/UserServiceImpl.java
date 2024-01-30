@@ -43,16 +43,6 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     @Override
     @Transactional
     public void save(User user) {
-//        List<Role> userRoles = new ArrayList<>();
-//        userRoles.add(new Role())
-        Role role = new Role();
-        role.setRole("ADMIN");
-//        role.getOwner_user().setRoles(List.of(role));
-        user.getRoles().add(role);
-        System.out.println("!!!!!!!!!!"+user.getRoles());
-
-//        user.setRoles(List.of(role));
-        roleRepository.save(role);
         userRepository.save(user);
     }
 
