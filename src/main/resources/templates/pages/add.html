@@ -15,8 +15,8 @@
     <div class="row">
       <div class="col-md-4 offset-md-4">
         <br>
-        <h1>Edit User</h1>
-        <form th:action="@{/admin/edit(id=${user.getId()})}" th:method="POST" th:object="${user}">
+        <h1>Add new User</h1>
+        <form th:action="@{/admin/add}" th:method="POST" th:object="${newUser}">
 
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingFirsName" placeholder="name@example.com" th:field="*{firstName}">
@@ -42,13 +42,19 @@
             <label for="floatingEmail">Email</label>
           </div>
 
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPass" placeholder="Password" th:field="*{password}">
+            <div class="red-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</div>
+            <label for="floatingPass">Password</label>
+          </div>
+
           <select class="form-select" multiple aria-label="Multiple select example" size="2" th:field="*{roles}">
             <option value="1">ADMIN</option>
             <option value="2">USER</option>
           </select>
-          <br>
 
-          <input type="submit" value="Update" class="btn btn-primary">
+          <br>
+          <input type="submit" value="Save" class="btn btn-primary">
         </form>
       </div>
     </div>
