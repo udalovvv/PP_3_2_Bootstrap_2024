@@ -6,7 +6,7 @@ import ru.kata.spring.boot_security.demo.entity.User;
 import java.util.List;
 
 
-@Repository
+
 public interface UserRepository {
 
     public List<User> findAll();
