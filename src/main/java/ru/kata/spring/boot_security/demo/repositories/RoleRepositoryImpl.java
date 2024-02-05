@@ -14,11 +14,6 @@ public class RoleRepositoryImpl implements RoleRepository{
 
 
     @Override
-    public Role findRoleByRole(String role) {
-        return null;
-    }
-
-    @Override
     public Role findRoleById(long id) {
         if (em.find(Role.class, id) == null) {
             throw new NullPointerException("Role with id=" + id + " is not find");
