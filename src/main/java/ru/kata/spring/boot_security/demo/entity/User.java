@@ -47,16 +47,20 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
-//    @NotEmpty(message = "Не может быть пустым")
+    @NotEmpty(message = "Не может быть пустым")
     @NonNull
     @Column(name = "password")
     private String  password;
 
     @NonNull
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
 
 
 
