@@ -29,6 +29,6 @@ public class UserController {
         userModel.addAttribute("user", userService.findById(id));
         userModel.addAttribute("authentication", authentication);
         userModel.addAttribute("authUser",  authentication.getPrincipal());
-        return "pages/show";
+        return "adminpanel/user";
     }
 }

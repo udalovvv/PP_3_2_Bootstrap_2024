@@ -18,5 +18,5 @@ public interface UserRepository {
 
     public void deleteById(long id);
 
-    User findByEmail(String username);
+    User findByEmail(String email);
 }

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.entity.User;
+import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.validation.Valid;
@@ -22,9 +23,12 @@ public class AdminController {
 
     private final UserService userService;
 
+    private final RoleService roleService;
+
     @Autowired
-    public AdminController(UserService userService) {
+    public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
+        this.roleService = roleService;
     }
 
     @GetMapping("")
@@ -34,7 +38,9 @@ public class AdminController {
         userModel.addAttribute("newUser", new User());
         userModel.addAttribute(AUTHENTICATION, authentication);
         userModel.addAttribute(AUTHUSER, authentication.getPrincipal());
-        return "pages/index";
+        userModel.addAttribute("rolesList", roleService.findAllRole());
+        userModel.addAttribute("admin", userService.findByEmail(authentication.getName()));
+        return "adminpanel/admin";
     }
 
     @GetMapping("/add")
@@ -86,12 +92,9 @@ public class AdminController {
         return REDIRECT_ADMIN;
     }
 
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     public String delete(@RequestParam("id") long id) {
         userService.deleteById(id);
         return REDIRECT_ADMIN;
     }
-
-
-
 }

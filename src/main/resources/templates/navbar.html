@@ -4,22 +4,18 @@
 <div th:fragment="copy (authUser, roles)">
 
 
-<nav class="navbar navbar-dark" style="background-color: #343a40">
-    <div class="container-fluid">
-        <span class="navbar-brand">
-            <b th:text="${authUser.getUsername()}">Username</b>
-            with roles:
-            <span th:each="role : ${authentication.getAuthorities()}">
-                                <span th:text="${role.authority}"></span>
+    <nav class="navbar navbar-dark" style="background-color: #343a40">
+        <div class="container-fluid">
+            <span class="navbar-brand">
+                <b th:text="${authUser.getUsername()}">Username</b>
+                with roles:
+                <span th:each="role : ${authentication.getAuthorities()}">
+                                    <span th:text="${role.authority}"></span>
+                </span>
             </span>
-        </span>
-        <a th:href="@{/logout}" class="navbar-text btn" id="logoutBtn">Logout</a>
-    </div>
-</nav>
+            <a th:href="@{/logout}" class="navbar-text btn" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
 
-
-<!--<div th:fragment="copy">-->
-<!--  © 2011 The Good Thymes Virtual Grocery-->
-<!--</div>-->
 </body>
 </html>
