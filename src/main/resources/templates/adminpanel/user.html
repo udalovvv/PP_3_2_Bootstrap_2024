@@ -36,6 +36,7 @@
                                     <th scope="row">ID</th>
                                     <th scope="row">First name</th>
                                     <th scope="row">Last name</th>
+                                    <th scope="row">Age</th>
                                     <th scope="row">Email</th>
                                     <th scope="row">Role</th>
                                 </tr>
@@ -43,8 +44,9 @@
                                 <tbody>
                                 <tr>
                                     <td th:text = "${user.getId()}" class="align-middle">ID</td>
-                                    <td th:text = "${user.getFirstName()}" class="align-middle">Name</td>
-                                    <td th:text = "${user.getLastName()}" class="align-middle">Surname</td>
+                                    <td th:text = "${user.getFirstName()}" class="align-middle">FirstName</td>
+                                    <td th:text = "${user.getLastName()}" class="align-middle">LastName</td>
+                                    <td th:text = "${user.getAge()}" class="align-middle">Age</td>
                                     <td th:text = "${user.getEmail()}" class="align-middle">Email</td>
                                     <td class="align-middle">
                                         <div th:each="role : ${user.roles}">

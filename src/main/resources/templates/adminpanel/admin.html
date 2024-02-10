@@ -42,6 +42,7 @@
                                             <th scope="row">ID</th>
                                             <th scope="row">First name</th>
                                             <th scope="row">Last name</th>
+                                            <th scope="row">Age</th>
                                             <th scope="row">Email</th>
                                             <th scope="row">Role</th>
                                             <th scope="row">Edit</th>
@@ -52,7 +53,8 @@
                                         <tr th:each = "user : ${users}">
                                             <td th:text = "${user.getId()}" class="align-middle">ID</td>
                                             <td th:text = "${user.getFirstName()}" class="align-middle">Name</td>
-                                            <td th:text = "${user.getLastName()}" class="align-middle">Surname</td>
+                                            <td th:text = "${user.getFirstName()}" class="align-middle">Name</td>
+                                            <td th:text = "${user.getAge()}" class="align-middle">Age</td>
                                             <td th:text = "${user.getEmail()}" class="align-middle">Email</td>
                                             <td class="align-middle">
                                                 <div th:each="role : ${user.getRoles()}">
@@ -86,9 +88,16 @@
                                                                             <input th:value="*{firstName}" type="text" id="editName" class="form-control" name="firstName">
                                                                         </div>
                                                                         <div class="mb-3">
+                                                                            <label for="editAge" class="form-label fw-bold">Last name</label>
+                                                                            <input th:value="*{age}" type="number" id="editAge" class="form-control" name="age">
+                                                                        </div>
+
+                                                                        <div class="mb-3">
                                                                             <label for="editSurname" class="form-label fw-bold">Last name</label>
                                                                             <input th:value="*{lastName}" type="text" id="editSurname" class="form-control" name="lastName">
                                                                         </div>
+
+
                                                                         <div class="mb-3">
                                                                             <label for="editUsername" class="form-label fw-bold">Email</label>
                                                                             <input th:value="*{email}" type="text" id="editUsername" class="form-control" name="email">
@@ -138,18 +147,27 @@
                                                                             <label for="deleteId" class="form-label fw-bold">ID</label>
                                                                             <input th:value="*{id}" type="number" id="deleteId" class="form-control" name="id" disabled>
                                                                         </div>
+
                                                                         <div class="mb-3">
                                                                             <label for="deleteName" class="form-label fw-bold">First name</label>
                                                                             <input th:value="*{firstName}" type="text" id="deleteName" class="form-control" name="firstName" disabled>
                                                                         </div>
+
                                                                         <div class="mb-3">
                                                                             <label for="deleteSurname" class="form-label fw-bold">Last name</label>
                                                                             <input th:value="*{lastName}" type="text" id="deleteSurname" class="form-control" name="lastName" disabled>
                                                                         </div>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="deleteAge" class="form-label fw-bold">Age</label>
+                                                                            <input th:value="*{age}" type="text" id="deleteAge" class="form-control" name="Age" disabled>
+                                                                        </div>
+
                                                                         <div class="mb-3">
                                                                             <label for="deleteUsername" class="form-label fw-bold">Email</label>
                                                                             <input th:value="*{username}" type="text" id="deleteUsername" class="form-control" name="username" disabled>
                                                                         </div>
+
                                                                         <div class="mb-3">
                                                                             <label for="deleteRoles" class="form-label fw-bold">Roles</label>
                                                                             <select id="deleteRoles" multiple="multiple" class="form-select form-select-sm" name="roles" disabled size="2" >
@@ -167,9 +185,9 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                        </tr>>
+                                        </tr>
                                         </tbody>
-                                    </table>>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -189,6 +207,8 @@
                                             <label for="surname" class="form-label fw-bold mt-3">Last name</label>
                                             <input th:field="*{lastName}" type="text" id="surname" class="form-control" placeholder="Last name">
 
+                                            <label for="age" class="form-label fw-bold mt-3">Age</label>
+                                            <input th:field="*{age}" type="number" id="age" class="form-control" placeholder="Age">
 
                                             <label for="username" class="form-label fw-bold mt-3">Email</label>
                                             <input th:field="*{email}" type="text" id="username" class="form-control" placeholder="Email">
@@ -232,8 +252,8 @@
                                 <tbody>
                                 <tr>
                                     <td th:text = "${admin.getId()}" class="align-middle">ID</td>
-                                    <td th:text = "${admin.getFirstName()}" class="align-middle">Name</td>
-                                    <td th:text = "${admin.getLastName()}" class="align-middle">Surname</td>
+                                    <td th:text = "${admin.getFirstName()}" class="align-middle">FirstName</td>
+                                    <td th:text = "${admin.getLastName()}" class="align-middle">LastName</td>
                                     <td th:text = "${admin.getAge()}" class="align-middle">Age</td>
                                     <td th:text = "${admin.getEmail()}" class="align-middle">Email</td>
                                     <td class="align-middle">
