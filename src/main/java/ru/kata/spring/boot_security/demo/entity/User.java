@@ -25,12 +25,14 @@ public class User implements UserDetails {
 
     @NotEmpty(message = "Не может быть пустым")
     @Size(min = 2, max = 20, message = "Длина имени доджна быть от 2 до 20 символов")
+    @Pattern(regexp = "^[A-Za-zА-Яа-я]+$", message = "Введите корректное имя")
     @NonNull
     @Column(name = "first_name")
     private String firstName;
 
     @NotEmpty(message = "Не может быть пустым")
     @Size(min = 2, max = 20, message = "Длина фамилии доджна быть от 2 до 20 символов")
+    @Pattern(regexp = "^[A-Za-zА-Яа-я]+$", message = "Введите корректное имя")
     @NonNull
     @Column(name = "last_name")
     private String lastName;
