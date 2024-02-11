@@ -29,7 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers().denyAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin().successHandler(successUserHandler);
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/users")
+                        .successHandler(successUserHandler)
+                        .usernameParameter("email")
+                        .passwordParameter("pass")
+                );
 
     }
 
