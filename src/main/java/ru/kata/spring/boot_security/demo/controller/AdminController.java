@@ -53,15 +53,7 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute("newUser") @Valid User user,
-                      BindingResult bindingResult,
-                      Authentication authentication,
-                      Model userModel) {
-        if (bindingResult.hasErrors()) {
-            userModel.addAttribute(AUTHENTICATION, authentication);
-            userModel.addAttribute(AUTHUSER, authentication.getPrincipal());
-            return "pages/add";
-        }
+    public String add(@ModelAttribute("newUser") User user) {
         userService.save(user);
         return REDIRECT_ADMIN;
     }
@@ -79,15 +71,7 @@ public class AdminController {
 
     @PostMapping("/edit")
     public String edit(@RequestParam("id") long id,
-                       @ModelAttribute("user") User user,
-                       BindingResult bindingResult,
-                       Model userModel,
-                       Authentication authentication) {
-        if (bindingResult. hasErrors() && !bindingResult.hasFieldErrors("password")) {
-            userModel.addAttribute(AUTHENTICATION, authentication);
-            userModel.addAttribute(AUTHUSER, authentication.getPrincipal());
-            return "pages/edit";
-        }
+                       @ModelAttribute("user") User user){
         userService.updateUser(id, user);
         return REDIRECT_ADMIN;
     }
